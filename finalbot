@@ -1,0 +1,45 @@
+import discord
+from discord.ext import commands
+from bot_token import token  # Ensure token is correct
+
+# Enable intents
+intents = discord.Intents.default()
+intents.message_content = True  # Make sure this is enabled in the Developer Portal
+
+# Initialize bot with a prefix
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user} olarak giriş yaptık')
+
+# Debugging message listener
+@bot.event
+async def on_message(message):
+    print(f"Received message: {message.content}")  # Check if the bot sees messages
+    await bot.process_commands(message)  # Important to allow commands to work
+
+@bot.command()
+async def hello(ctx):
+    print("Hello command received!")  # Debugging
+    await ctx.send(f'Merhaba! Ben {bot.user}, bir Discord sohbet botuyum!')
+
+@bot.command()
+async def ev_temizligi(ctx):
+    await ctx.send("Evindeki camları temizleyip yine kullanabilirsin.")
+
+@bot.command()
+async def plastik(ctx):
+    await ctx.send("Evindeki plastik kapları geri dönüşüm yerine koyabilirsin.")
+
+
+@bot.command()
+async def imkansiz(ctx):
+    await ctx.send("plastikleri sehirdeki kovalara at")
+
+@bot.command()
+async def uzaktadir(ctx):
+    await ctx.send("bir yere biriktirip gittigin zaman atabilirsin")
+
+# Run the bot
+bot.run(token)

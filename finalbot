@@ -41,5 +41,13 @@ async def imkansiz(ctx):
 async def uzaktadir(ctx):
     await ctx.send("bir yere biriktirip gittigin zaman atabilirsin")
 
+@bot.command()
+async def kagit(ctx):
+    await ctx.send("kagit icin maalesef bilgim yok")
+
+@bot.command()
+async def oyun_konusalim(ctx):
+    await ctx.send("konusamam cunku ben bir ev temizligi botuyum")
+
 # Run the bot
 bot.run(token)
